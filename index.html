@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fettucine's Cute Garden 🌱</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Cute floating elements */
+        .floating-decoration {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .sparkle {
+            position: absolute;
+            color: #ffb3d9;
+            font-size: 1.2rem;
+            animation: twinkle 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Mobile-first responsive container */
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header with kawaii styling */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.4);
+            border: 3px solid #ffb6c1;
+        }
+
+        .title {
+            font-size: 2rem;
+            color: #d63384;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #e91e63;
+            font-weight: 500;
+        }
+
+        /* Card system for mobile */
+        .content-section {
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(255,240,245,0.95));
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 25px rgba(255, 182, 193, 0.3);
+            border: 2px solid #ffb6c1;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,182,193,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .card:hover, .card:active {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 182, 193, 0.4);
+            border-color: #ff69b4;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: #d63384;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-content {
+            font-size: 0.95rem;
+            color: #495057;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Special memorial card */
+        .memorial-card {
+            background: linear-gradient(145deg, #ffe5ec, #fff0f5);
+            border: 3px solid #ff69b4;
+            animation: gentleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes gentleGlow {
+            0% { box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3); }
+            100% { box-shadow: 0 8px 35px rgba(255, 105, 180, 0.5); }
+        }
+
+        /* Girly favorite things list */
+        .favorites-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .favorites-list li {
+            padding: 8px 0;
+            font-size: 0.95rem;
+            color: #495057;
+            display: flex;
+            align-items: center;
+        }
+
+        .favorites-list li span.emoji {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Interactive section */
+        .interactive-section {
+            text-align: center;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            border: 2px solid #ffb6c1;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            color: #d63384;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* Mobile-optimized dancing animals */
+        .dancing-animals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+            justify-items: center;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .animal {
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: dance 3s ease-in-out infinite;
+            padding: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 3px 12px rgba(255, 182, 193, 0.3);
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            min-height: 50px;
+            min-width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .animal:nth-child(1) { animation-delay: 0s; }
+        .animal:nth-child(2) { animation-delay: 0.6s; }
+        .animal:nth-child(3) { animation-delay: 1.2s; }
+        .animal:nth-child(4) { animation-delay: 1.8s; }
+        .animal:nth-child(5) { animation-delay: 2.4s; }
+
+        @keyframes dance {
+            0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+            25% { transform: translateY(-15px) scale(1.1) rotate(5deg); }
+            50% { transform: translateY(0) scale(1) rotate(0deg); }
+            75% { transform: translateY(-8px) scale(1.05) rotate(-5deg); }
+        }
+
+        .animal:hover, .animal:active {
+            transform: scale(1.3) rotate(15deg);
+            animation-duration: 0.5s;
+        }
+
+        /* Mobile-optimized buttons */
+        .cute-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .cute-button {
+            background: linear-gradient(45deg, #ff6b9d, #ffa5d8);
+            border: none;
+            padding: 14px 20px;
+            border-radius: 25px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+            font-family: 'Quicksand', sans-serif;
+            position: relative;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            min-height: 48px;
+        }
+
+        .cute-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transition: all 0.6s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .cute-button:hover::before, .cute-button:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cute-button:hover, .cute-button:active {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
+        }
+
+        /* Jellybelly section */
+        .jellybelly-section {
+            background: linear-gradient(135deg, #ffb3d9, #ffd4e5, #ffe5f1);
+            border: 3px solid #ff69b4;
+            animation: colorShift 4s ease-in-out infinite;
+        }
+
+        @keyframes colorShift {
+            0%, 100% { border-color: #ff69b4; }
+            33% { border-color: #ff1493; }
+            66% { border-color: #ffc0cb; }
+        }
+
+        .wiggle-text {
+            display: inline-block;
+            animation: wiggle 2s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(2deg); }
+            75% { transform: rotate(-2deg); }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            border: 2px solid #ffb6c1;
+        }
+
+        .footer-text {
+            color: #d63384;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .footer-subtext {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        /* Enhanced responsive design for Android */
+        @media (max-width: 480px) {
+            .container { padding: 8px; }
+            .title { font-size: 1.6rem; }
+            .subtitle { font-size: 0.8rem; }
+            .card { padding: 14px; margin-bottom: 10px; }
+            .card-title { font-size: 1rem; }
+            .card-content { font-size: 0.8rem; }
+            .animal { font-size: 1.8rem; padding: 6px; min-height: 45px; min-width: 45px; }
+            .cute-button { font-size: 0.85rem; padding: 12px 16px; }
+            .section-title { font-size: 1rem; }
+        }
+
+        @media (min-width: 576px) {
+            .container { padding: 15px; }
+            .title { font-size: 2.2rem; }
+            .cute-buttons { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .cute-button { flex: 1; min-width: 140px; max-width: 180px; }
+            .dancing-animals { max-width: 350px; grid-template-columns: repeat(5, 1fr); }
+        }
+
+        @media (min-width: 768px) {
+            .container { max-width: 750px; padding: 30px; }
+            .content-section { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+            .memorial-card, .jellybelly-section { grid-column: 1 / -1; }
+            .dancing-animals { grid-template-columns: repeat(5, 1fr); }
+            .animal { font-size: 3rem; }
+        }
+
+        @media (min-width: 992px) {
+            .container { max-width: 960px; }
+            .title { font-size: 3rem; }
+        }
+
+        @media (min-width: 1200px) {
+            .container { max-width: 1140px; }
+        }
+
+        /* Touch-friendly interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .card:hover { transform: none; }
+            .animal:hover { transform: none; }
+            .cute-button:hover { transform: none; }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Sound control button */
+        .sound-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff6b9d, #ffa5d8);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .sound-control:hover, .sound-control:active {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Sound control button -->
+    <button class="sound-control" onclick="toggleSound()" id="soundBtn" title="Toggle cute sounds">🔊</button>
+
+    <!-- Floating decorative elements -->
+    <div class="floating-decoration" style="top: 10%; left: 5%; animation-delay: 0s;">🌸</div>
+    <div class="floating-decoration" style="top: 20%; right: 10%; animation-delay: 1s;">🦋</div>
+    <div class="floating-decoration" style="top: 60%; left: 8%; animation-delay: 2s;">⭐</div>
+    <div class="floating-decoration" style="top: 80%; right: 5%; animation-delay: 3s;">🌺</div>
+    
+    <!-- Sparkles -->
+    <div class="sparkle" style="top: 15%; left: 20%; animation-delay: 0.5s;">✨</div>
+    <div class="sparkle" style="top: 40%; right: 15%; animation-delay: 1.5s;">💫</div>
+    <div class="sparkle" style="top: 70%; left: 15%; animation-delay: 2.5s;">⭐</div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title">🌸 For My Cute Leon 🌸</h1>
+            <p class="subtitle">✨ A special garden made with love just for you, sweet Fettucine ✨</p>
+        </header>
+
+        <div class="content-section">
+            <div class="card memorial-card">
+                <h2 class="card-title">🌿 Leon's Plant Baby 🌿</h2>
+                <div class="card-content">
+                    <p>💕 You once had a beautiful plant that you loved like your own child. It brought endless joy to your days, filling your heart with green happiness.</p>
+                    <p>💔 Sadly, your little green friend passed away last year, leaving a tender spot in your heart.</p>
+                    <p>🌱 Since then, you haven't been ready to welcome another plant baby, but the love remains forever blooming inside you, sweet Leon.</p>
+                    <p style="text-align: center; margin-top: 15px; font-style: italic; color: #e91e63;">
+                        "Your heart is like a garden where love never stops growing" 🌸
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">💖 What Makes Leon So Cute 💖</h2>
+                <div class="card-content">
+                    <p style="margin-bottom: 15px;">Everything about you is absolutely adorable, Leon! Your heart melts for:</p>
+                    <ul class="favorites-list">
+                        <li><span class="emoji">🌱</span><strong>Plants</strong> - Your green soul companions that you love like children</li>
+                        <li><span class="emoji">💕</span><strong>Hearts</strong> - Love symbols that match your sweet heart!</li>
+                        <li><span class="emoji">🐰</span><strong>Bunnies</strong> - Fluffy cotton ball cuties just like you</li>
+                        <li><span class="emoji">🐶</span><strong>Puppies</strong> - Loyal love machines that adore you</li>
+                        <li><span class="emoji">🧸</span><strong>Teddy Bears</strong> - Snuggly dream friends for hugs</li>
+                        <li><span class="emoji">🌸</span><strong>Pink & Red</strong> - Colors as pretty as your smile</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card jellybelly-section">
+                <h2 class="card-title">🍬 <span class="wiggle-text">Sweet Like Leon</span> 🍬</h2>
+                <div class="card-content">
+                    <p>🌈 Just like your favorite jellybelly treats, you bring so many sweet flavors to life - each moment with you is a delightful surprise!</p>
+                    <p>✨ Your personality is like a handful of the most colorful jellybeans - sweet, vibrant, and always making everyone smile!</p>
+                    <p>💫 You're the sweetest jellybelly in the whole jar, Leon! 😊💕</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">🍝 Why We Call You Fettucine 🍝</h2>
+                <div class="card-content">
+                    <p>🇮🇹 Your adorable nickname "Fettuccine" comes from that beautiful Italian pasta!</p>
+                    <p>🍜 Just like those graceful, ribbon-like noodles that dance together in perfect harmony, you bring people together with your sweet, loving nature.</p>
+                    <p>👫 Pasta has this magical way of creating warmth and connection, just like how you light up every room you enter, dear Leon.</p>
+                    <p>💕 You're the most precious fettuccine strand in our bowl of friendship - binding us all together with love! 🤗</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="interactive-section">
+            <h2 class="section-title">🎉 Leon's Dancing Friends! 🎉</h2>
+            <p style="color: #e91e63; margin-bottom: 15px; font-size: 0.9rem;">Click them to make them dance for you, cutie! 💕</p>
+            <div class="dancing-animals">
+                <div class="animal" onclick="makeAnimalJump(this)" role="button" tabindex="0" aria-label="Dancing bunny">🐰</div>
+                <div class="animal" onclick="makeAnimalJump(this)" role="button" tabindex="0" aria-label="Dancing puppy">🐶</div>
+                <div class="animal" onclick="makeAnimalJump(this)" role="button" tabindex="0" aria-label="Dancing teddy bear">🧸</div>
+                <div class="animal" onclick="makeAnimalJump(this)" role="button" tabindex="0" aria-label="Dancing plant">🌱</div>
+                <div class="animal" onclick="makeAnimalJump(this)" role="button" tabindex="0" aria-label="Dancing heart">💕</div>
+            </div>
+            
+            <div class="cute-buttons">
+                <button class="cute-button" onclick="createHeartExplosion()" aria-label="Create heart explosion">💖 For Leon's Sweet Heart 💖</button>
+                <button class="cute-button" onclick="createEmojiShower()" aria-label="Create emoji shower">🌟 Shower Leon with Love 🌟</button>
+                <button class="cute-button" onclick="changeBgColor()" aria-label="Change background color">🎨 Paint Leon's Dreams 🎨</button>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p class="footer-text">Made with endless 💖 for the sweetest Leon!</p>
+            <p class="footer-subtext">✨ You're as precious as the cutest teddy bear and as lovely as the prettiest flower 🌸🧸</p>
+            <p style="color: #ff69b4; font-size: 0.85rem; margin-top: 8px; font-style: italic;">
+                "Someone thinks you're absolutely adorable, Leon! 💕"
+            </p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script>
+        // Enhanced cute sound system for Leon 🎵
+        let audioContext;
+        let bgMusic;
+        let soundEnabled = false;
+        let musicStarted = false;
+        let currentMelodyIndex = 0;
+
+        // Initialize audio system
+        async function initAudio() {
+            try {
+                if (!audioContext) {
+                    await Tone.start();
+                    audioContext = Tone.context;
+                    setupCuteSounds();
+                }
+            } catch (error) {
+                console.log('Audio not supported');
+            }
+        }
+
+        // Setup multiple cute sound layers
+        function setupCuteSounds() {
+            // Main twinkle synth
+            const twinkleSynth = new Tone.PolySynth(Tone.Synth, {
+                oscillator: { type: "sine" },
+                envelope: { attack: 0.1, decay: 0.3, sustain: 0.1, release: 0.8 }
+            }).toDestination();
+
+            // Soft pad for ambient chords
+            const padSynth = new Tone.PolySynth(Tone.Synth, {
+                oscillator: { type: "triangle" },
+                envelope: { attack: 2, decay: 1, sustain: 0.3, release: 3 }
+            }).toDestination();
+
+            // Bell-like sounds for special effects
+            const bellSynth = new Tone.PolySynth(Tone.FMSynth, {
+                harmonicity: 3,
+                modulationIndex: 10,
+                envelope: { attack: 0.01, decay: 0.5, sustain: 0.1, release: 1 }
+            }).toDestination();
+
+            // Music box style melody
+            const musicBoxSynth = new Tone.PolySynth(Tone.Synth, {
+                oscillator: { type: "square" },
+                envelope: { attack: 0.02, decay: 0.1, sustain: 0.3, release: 0.5 }
+            }).toDestination();
+
+            // Wind chime effect
+            const chimeSynth = new Tone.PolySynth(Tone.MetalSynth, {
+                frequency: 200,
+                envelope: { attack: 0.001, decay: 1.4, release: 0.2 },
+                harmonicity: 5.1,
+                modulationIndex: 32,
+                resonance: 4000,
+                octaves: 1.5
+            }).toDestination();
+
+            // Set volumes
+            twinkleSynth.volume.value = -20;
+            padSynth.volume.value = -25;
+            bellSynth.volume.value = -22;
+            musicBoxSynth.volume.value = -24;
+            chimeSynth.volume.value = -28;
+
+            // Store globally
+            window.twinkleSynth = twinkleSynth;
+            window.padSynth = padSynth;
+            window.bellSynth = bellSynth;
+            window.musicBoxSynth = musicBoxSynth;
+            window.chimeSynth = chimeSynth;
+
+            // Start cute background sounds
+            if (soundEnabled) {
+                startBackgroundMusic();
+                startRandomCuteSounds();
+            }
+        }
+
+        // Multiple cute melodies for variety
+        const cuteMelodies = [
+            // Twinkle Twinkle variation
+            ["C5", "C5", "G5", "G5", "A5", "A5", "G5"],
+            // Mary Had a Little Lamb variation  
+            ["E5", "D5", "C5", "D5", "E5", "E5", "E5"],
+            // Happy Birthday variation
+            ["C5", "C5", "D5", "C5", "F5", "E5"],
+            // Cute kawaii melody
+            ["G5", "E5", "C5", "E5", "G5", "C6", "E6"]
+        ];
+
+        // Cute background music with multiple layers
+        function startBackgroundMusic() {
+            if (!window.padSynth || musicStarted) return;
+            musicStarted = true;
+
+            const cuteChords = [
+                ["C4", "E4", "G4"],
+                ["F4", "A4", "C5"],
+                ["G4", "B4", "D5"],
+                ["E4", "G4", "C5"]
+            ];
+
+            let chordIndex = 0;
+            
+            const playChord = () => {
+                if (soundEnabled && window.padSynth) {
+                    window.padSynth.triggerAttackRelease(cuteChords[chordIndex], "2n");
+                    chordIndex = (chordIndex + 1) % cuteChords.length;
+                }
+            };
+
+            // Gentle melody overlay
+            const playMelody = () => {
+                if (soundEnabled && window.musicBoxSynth) {
+                    const melody = cuteMelodies[currentMelodyIndex];
+                    melody.forEach((note, index) => {
+                        setTimeout(() => {
+                            if (soundEnabled) {
+                                window.musicBoxSynth.triggerAttackRelease(note, "8n");
+                            }
+                        }, index * 500);
+                    });
+                    currentMelodyIndex = (currentMelodyIndex + 1) % cuteMelodies.length;
+                }
+            };
+
+            // Play gentle chords every 4 seconds
+            setInterval(playChord, 4000);
+            // Play melody every 12 seconds
+            setInterval(playMelody, 12000);
+            
+            playChord(); // Start immediately
+            setTimeout(playMelody, 2000); // Start melody after 2 seconds
+        }
+
+        // Random cute sound effects in background
+        function startRandomCuteSounds() {
+            // Random bell chimes
+            setInterval(() => {
+                if (soundEnabled && Math.random() > 0.85) {
+                    playRandomBell();
+                }
+            }, 8000);
+
+            // Random wind chimes
+            setInterval(() => {
+                if (soundEnabled && Math.random() > 0.9) {
+                    playWindChime();
+                }
+            }, 15000);
+
+            // Occasional bird-like chirps
+            setInterval(() => {
+                if (soundEnabled && Math.random() > 0.88) {
+                    playBirdChirp();
+                }
+            }, 10000);
+        }
+
+        // Individual cute sound effects
+        function playTwinkle() {
+            if (!soundEnabled || !window.twinkleSynth) return;
+            
+            const twinkleNotes = ["C6", "E6", "G6", "C7", "E7"];
+            const note = twinkleNotes[Math.floor(Math.random() * twinkleNotes.length)];
+            window.twinkleSynth.triggerAttackRelease(note, "16n");
+        }
+
+        function playMagicChime() {
+            if (!soundEnabled || !window.bellSynth) return;
+            
+            const magicSequence = ["C6", "E6", "G6", "C7", "E7"];
+            magicSequence.forEach((note, index) => {
+                setTimeout(() => {
+                    window.bellSynth.triggerAttackRelease(note, "16n");
+                }, index * 100);
+            });
+        }
+
+        function playHeartSound() {
+            if (!soundEnabled || !window.twinkleSynth) return;
+            
+            // Cute heart sound - ascending notes with harmony
+            const heartNotes = ["G5", "C6", "E6", "G6"];
+            const harmony = ["E5", "G5", "C6", "E6"];
+            
+            heartNotes.forEach((note, index) => {
+                setTimeout(() => {
+                    window.twinkleSynth.triggerAttackRelease(note, "8n");
+                    // Add harmony
+                    setTimeout(() => {
+                        window.twinkleSynth.triggerAttackRelease(harmony[index], "8n");
+                    }, 40);
+                }, index * 120);
+            });
+        }
+
+        function playRandomBell() {
+            if (!soundEnabled || !window.bellSynth) return;
+            
+            const bellNotes = ["C6", "D6", "E6", "G6", "A6"];
+            const note = bellNotes[Math.floor(Math.random() * bellNotes.length)];
+            window.bellSynth.triggerAttackRelease(note, "4n");
+        }
+
+        function playWindChime() {
+            if (!soundEnabled || !window.chimeSynth) return;
+            
+            const chimeNotes = ["G5", "A5", "C6", "D6", "E6"];
+            // Play 3-5 random chime notes in sequence
+            const numNotes = Math.floor(Math.random() * 3) + 3;
+            
+            for (let i = 0; i < numNotes; i++) {
+                setTimeout(() => {
+                    const note = chimeNotes[Math.floor(Math.random() * chimeNotes.length)];
+                    window.chimeSynth.triggerAttackRelease(note, "8n");
+                }, i * (Math.random() * 200 + 100));
+            }
+        }
+
+        function playBirdChirp() {
+            if (!soundEnabled || !window.twinkleSynth) return;
+            
+            // Create bird-like chirping pattern
+            const chirpNotes = ["E6", "G6", "A6", "C7"];
+            const chirpPattern = [0, 2, 1, 3, 2]; // Pattern indices
+            
+            chirpPattern.forEach((noteIndex, i) => {
+                setTimeout(() => {
+                    window.twinkleSynth.triggerAttackRelease(chirpNotes[noteIndex], "32n");
+                }, i * 80);
+            });
+        }
+
+        function playKawaiiSound() {
+            if (!soundEnabled || !window.musicBoxSynth) return;
+            
+            // Special kawaii sound for Leon
+            const kawaii = ["C6", "E6", "G6", "E6", "C6"];
+            kawaii.forEach((note, index) => {
+                setTimeout(() => {
+                    window.musicBoxSynth.triggerAttackRelease(note, "16n");
+                }, index * 60);
+            });
+        }
+
+        // Toggle sound on/off
+        async function toggleSound() {
+            const btn = document.getElementById('soundBtn');
+            
+            if (!audioContext) {
+                await initAudio();
+            }
+            
+            soundEnabled = !soundEnabled;
+            
+            if (soundEnabled) {
+                btn.innerHTML = '🔊';
+                btn.title = 'Turn off cute sounds';
+                if (window.padSynth && !musicStarted) {
+                    startBackgroundMusic();
+                    startRandomCuteSounds();
+                }
+                playKawaiiSound(); // Special welcome sound for Leon
+            } else {
+                btn.innerHTML = '🔇';
+                btn.title = 'Turn on cute sounds';
+            }
+
+            // Add haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+        }
+
+        // Enhanced mobile-friendly interactions
+        let isAnimating = false;
+
+        // Make animals jump with enhanced effects
+        function makeAnimalJump(animal) {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            animal.style.animation = 'none';
+            setTimeout(() => {
+                animal.style.animation = 'dance 0.6s ease-in-out';
+            }, 10);
+            
+            // Create magical sparkles
+            createSparkles(animal);
+            
+            // Play cute twinkle sound
+            playTwinkle();
+            
+            // Add haptic feedback on mobile
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+            
+            setTimeout(() => {
+                isAnimating = false;
+            }, 600);
+        }
+
+        // Create sparkles around elements
+        function createSparkles(element) {
+            const sparkleEmojis = ['✨', '💫', '⭐', '🌟', '💖'];
+            const rect = element.getBoundingClientRect();
+            
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.innerHTML = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.left = (rect.left + rect.width/2 + (Math.random() - 0.5) * 100) + 'px';
+                    sparkle.style.top = (rect.top + rect.height/2 + (Math.random() - 0.5) * 100) + 'px';
+                    sparkle.style.fontSize = '1.5rem';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.zIndex = '1000';
+                    sparkle.style.opacity = '1';
+                    sparkle.style.transition = 'all 1.5s ease-out';
+                    
+                    document.body.appendChild(sparkle);
+                    
+                    // Animate sparkle
+                    setTimeout(() => {
+                        sparkle.style.transform = `translateY(-${Math.random() * 100 + 50}px) scale(0)`;
+                        sparkle.style.opacity = '0';
+                    }, 50);
+                    
+                    setTimeout(() => sparkle.remove(), 1500);
+                }, i * 100);
+            }
+        }
+
+        // Enhanced heart explosion
+        function createHeartExplosion() {
+            const hearts = ['💖', '💕', '💗', '💝', '🌸', '🌺'];
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            
+            // Play heart sound
+            playHeartSound();
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.position = 'fixed';
+                    heart.style.left = centerX + 'px';
+                    heart.style.top = centerY + 'px';
+                    heart.style.fontSize = '2rem';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.zIndex = '1000';
+                    heart.style.transform = 'translate(-50%, -50%)';
+                    
+                    const angle = (i / 20) * 360;
+                    const distance = Math.random() * 200 + 100;
+                    
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.style.transition = 'all 2s ease-out';
+                        heart.style.transform = `translate(-50%, -50%) 
+                            translate(${Math.cos(angle * Math.PI / 180) * distance}px, 
+                                     ${Math.sin(angle * Math.PI / 180) * distance}px) 
+                            rotate(${Math.random() * 720}deg) scale(0)`;
+                        heart.style.opacity = '0';
+                    }, 50);
+                    
+                    setTimeout(() => heart.remove(), 2100);
+                }, i * 50);
+            }
+            
+            // Add haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate([100, 50, 100]);
+            }
+        }
+
+        // Enhanced emoji shower
+        function createEmojiShower() {
+            const emojis = ['🌸', '🌺', '🦋', '✨', '💫', '⭐', '🌟', '💖', '🧸', '🐰', '🌱'];
+            
+            // Play magic chime
+            playMagicChime();
+            
+            for (let i = 0; i < 25; i++) {
+                setTimeout(() => {
+                    const emoji = document.createElement('div');
+                    emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                    emoji.style.position = 'fixed';
+                    emoji.style.left = Math.random() * window.innerWidth + 'px';
+                    emoji.style.top = '-50px';
+                    emoji.style.fontSize = '1.5rem';
+                    emoji.style.pointerEvents = 'none';
+                    emoji.style.zIndex = '1000';
+                    emoji.style.opacity = '1';
+                    
+                    document.body.appendChild(emoji);
+                    
+                    const fallDuration = Math.random() * 2000 + 3000;
+                    const swayAmount = Math.random() * 100 + 50;
+                    
+                    emoji.style.transition = `all ${fallDuration}ms ease-out`;
+                    
+                    setTimeout(() => {
+                        emoji.style.transform = `translateY(${window.innerHeight + 100}px) 
+                                               translateX(${(Math.random() - 0.5) * swayAmount}px) 
+                                               rotate(${Math.random() * 720}deg)`;
+                        emoji.style.opacity = '0';
+                    }, 50);
+                    
+                    setTimeout(() => emoji.remove(), fallDuration + 100);
+                }, i * 80);
+            }
+        }
+
+        // Enhanced background color changer
+        function changeBgColor() {
+            const gradients = [
+                'linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%)',
+                'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
+                'linear-gradient(135deg, #ff8a80 0%, #ff80ab 50%, #ea80fc 100%)',
+                'linear-gradient(135deg, #ffd1ff 0%, #ffc2e2 50%, #ffb3d9 100%)',
+                'linear-gradient(135deg, #ffe5ec 0%, #ffc2d4 50%, #ff9ec7 100%)'
+            ];
+            
+            const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
+            document.body.style.background = randomGradient;
+            document.body.style.backgroundAttachment = 'fixed';
+            
+            // Add haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(100);
+            }
+        }
+
+        // Add keyboard support for accessibility
+        document.addEventListener('keydown', function(e) {
+            if (e.target.classList.contains('animal') && (e.key === 'Enter' || e.key === ' ')) {
+                e.preventDefault();
+                makeAnimalJump(e.target);
+            }
+        });
+
+        // Add touch feedback for mobile
+        document.addEventListener('touchstart', function(e) {
+            if (e.target.classList.contains('animal') || e.target.classList.contains('cute-button')) {
+                e.target.style.transform += ' scale(0.95)';
+            }
+        });
+
+        document.addEventListener('touchend', function(e) {
+            if (e.target.classList.contains('animal') || e.target.classList.contains('cute-button')) {
+                setTimeout(() => {
+                    e.target.style.transform = e.target.style.transform.replace(' scale(0.95)', '');
+                }, 150);
+            }
+        });
+
+        // Initialize with some magic
+        setTimeout(() => {
+            createEmojiShower();
+        }, 1000);
+
+        // Auto-create occasional sparkles with variety of sounds
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                const animals = document.querySelectorAll('.animal');
+                const randomAnimal = animals[Math.floor(Math.random() * animals.length)];
+                createSparkles(randomAnimal);
+                
+                // Play random cute sounds occasionally
+                if (soundEnabled) {
+                    const randomSound = Math.random();
+                    if (randomSound > 0.85) {
+                        setTimeout(() => playTwinkle(), Math.random() * 1000);
+                    } else if (randomSound > 0.75) {
+                        setTimeout(() => playRandomBell(), Math.random() * 1500);
+                    } else if (randomSound > 0.65) {
+                        setTimeout(() => playBirdChirp(), Math.random() * 800);
+                    }
+                }
+            }
+        }, 3000);
+
+        // Initialize audio on first user interaction
+        document.addEventListener('click', async () => {
+            if (!audioContext) {
+                await initAudio();
+            }
+        }, { once: true });
+
+        document.addEventListener('touchstart', async () => {
+            if (!audioContext) {
+                await initAudio();
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>
